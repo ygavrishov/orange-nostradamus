@@ -49,5 +49,9 @@ labels = list(get_all_labels(root_folder))
 # Ensure the output directory exists
 os.makedirs(output_dir, exist_ok=True)
 
-convert_cvat_to_yolo(xml_file, output_dir, labels)
+for file in os.listdir(root_folder):
+    if file.endswith(".xml"):
+        xml_file = os.path.join(root_folder, file);
+        convert_cvat_to_yolo(xml_file, output_dir, labels)
 print (labels)
+print(len(labels))
